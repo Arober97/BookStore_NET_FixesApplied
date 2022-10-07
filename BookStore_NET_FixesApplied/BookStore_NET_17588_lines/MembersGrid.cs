@@ -282,7 +282,8 @@ ICollection Members_CreateDataSource() {
 	//-------------------------------
 	
 	OleDbDataAdapter command = new OleDbDataAdapter(Members_sSQL, Utility.Connection);
-	DataSet ds = new DataSet();
+	DataSet ds.Raw = new DataSet();
+	DataSet ds = Server.HTMLEncode(DataSet ds.Raw);
 	
 	command.Fill(ds, (i_Members_curpage - 1) * Members_PAGENUM, Members_PAGENUM,"Members");
 	OleDbCommand ccommand = new OleDbCommand(Members_sCountSQL, Utility.Connection);
