@@ -206,24 +206,25 @@ Utility.buildListBox(Orders_item_id.Items,"select item_id,name from items order 
 
 	}}
 
-		if(ActionInsert){
+		if(ActionInsert){{
 
 		String pValue;
 
-		pValue = Utility.GetParam("order_id");Orders_order_id.Text = pValue;
-		pValue = Utility.GetParam("member_id");
-		try {Orders_member_id.SelectedIndex=Orders_member_id.Items.IndexOf(Orders_member_id.Items.FindByValue(pValue));
+		pValue.Raw = Utility.GetParam("order_id");Orders_order_id.Text = .Raw;
+		pValue.Raw = Utility.GetParam("member_id");
+		try {Orders_member_id.SelectedIndex=Orders_member_id.Items.IndexOf(Orders_member_id.Items.FindByValue(pValue.Raw));
 		}catch{}
 	
-		pValue = Utility.GetParam("item_id");
-		try {Orders_item_id.SelectedIndex=Orders_item_id.Items.IndexOf(Orders_item_id.Items.FindByValue(pValue));
+		pValue.Raw = Utility.GetParam("item_id");
+		try {Orders_item_id.SelectedIndex=Orders_item_id.Items.IndexOf(Orders_item_id.Items.FindByValue(pValue.Raw));
 		}catch{}
 	Orders_delete.Visible=false;
 	Orders_update.Visible=false;
 	
 // Orders ShowInsert Event begin
 // Orders ShowInsert Event end
-
+Sanitizer = array(";","\","#","$","?","/")
+	string pValue = string_replace(Sanitizer,"",pValue.Raw)}
 }
 
 

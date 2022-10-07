@@ -350,9 +350,10 @@ ICollection Recommended_CreateDataSource() {
 	//-------------------------------
 	
 	OleDbDataAdapter command = new OleDbDataAdapter(Recommended_sSQL, Utility.Connection);
-	DataSet ds = new DataSet();
+	DataSet ds = Server.HTMLEncode(DataSet ds.Raw);
+	ds.Raw = new DataSet();
 	
-	command.Fill(ds, (i_Recommended_curpage - 1) * Recommended_PAGENUM, Recommended_PAGENUM,"Recommended");
+	command.Fill(ds.Raw, (i_Recommended_curpage - 1) * Recommended_PAGENUM, Recommended_PAGENUM,"Recommended");
 	OleDbCommand ccommand = new OleDbCommand(Recommended_sCountSQL, Utility.Connection);
 	int PageTemp=(int)ccommand.ExecuteScalar();
 	Recommended_Pager.MaxPage=(PageTemp%Recommended_PAGENUM)>0?(int)(PageTemp/Recommended_PAGENUM)+1:(int)(PageTemp/Recommended_PAGENUM);
@@ -463,9 +464,10 @@ ICollection What_CreateDataSource() {
 	//-------------------------------
 	
 	OleDbDataAdapter command = new OleDbDataAdapter(What_sSQL, Utility.Connection);
-	DataSet ds = new DataSet();
+	DataSet ds = Server.HTMLEncode(DataSet ds.Raw);
+	ds.Raw = new DataSet();
 	 	
-	command.Fill(ds, 0, What_PAGENUM, "What");
+	command.Fill(ds.Raw, 0, What_PAGENUM, "What");
 	DataView Source;
         Source = new DataView(ds.Tables[0]);
 
@@ -654,9 +656,10 @@ ICollection New_CreateDataSource() {
 	//-------------------------------
 	
 	OleDbDataAdapter command = new OleDbDataAdapter(New_sSQL, Utility.Connection);
-	DataSet ds = new DataSet();
+	DataSet ds = Server.HTMLEncode(DataSet ds.Raw);
+	ds.Raw = new DataSet();
 	 	
-	command.Fill(ds, 0, New_PAGENUM, "New");
+	command.Fill(ds.Raw, 0, New_PAGENUM, "New");
 	DataView Source;
         Source = new DataView(ds.Tables[0]);
 
@@ -752,9 +755,10 @@ ICollection Weekly_CreateDataSource() {
 	//-------------------------------
 	
 	OleDbDataAdapter command = new OleDbDataAdapter(Weekly_sSQL, Utility.Connection);
-	DataSet ds = new DataSet();
+	DataSet ds = Server.HTMLEncode(DataSet ds.Raw);
+	ds.Raw = new DataSet();
 	 	
-	command.Fill(ds, 0, Weekly_PAGENUM, "Weekly");
+	command.Fill(ds.Raw, 0, Weekly_PAGENUM, "Weekly");
 	DataView Source;
         Source = new DataView(ds.Tables[0]);
 
@@ -845,9 +849,10 @@ ICollection Specials_CreateDataSource() {
 	//-------------------------------
 	
 	OleDbDataAdapter command = new OleDbDataAdapter(Specials_sSQL, Utility.Connection);
-	DataSet ds = new DataSet();
+	DataSet ds = Server.HTMLEncode(DataSet ds.Raw);
+	ds.Raw = new DataSet();
 	 	
-	command.Fill(ds, 0, Specials_PAGENUM, "Specials");
+	command.Fill(ds.Raw, 0, Specials_PAGENUM, "Specials");
 	DataView Source;
         Source = new DataView(ds.Tables[0]);
 

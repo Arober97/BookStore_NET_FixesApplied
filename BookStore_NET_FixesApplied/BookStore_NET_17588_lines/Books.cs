@@ -289,9 +289,10 @@ ICollection Results_CreateDataSource() {
 	//-------------------------------
 	
 	OleDbDataAdapter command = new OleDbDataAdapter(Results_sSQL, Utility.Connection);
-	DataSet ds = new DataSet();
+	DataSet ds = Server.HTMLEncode(DataSet ds.Raw);
+	ds.Raw = new DataSet();
 	
-	command.Fill(ds, (i_Results_curpage - 1) * Results_PAGENUM, Results_PAGENUM,"Results");
+	command.Fill(ds.Raw, (i_Results_curpage - 1) * Results_PAGENUM, Results_PAGENUM,"Results");
 	OleDbCommand ccommand = new OleDbCommand(Results_sCountSQL, Utility.Connection);
 	int PageTemp=(int)ccommand.ExecuteScalar();
 	Results_Pager.MaxPage=(PageTemp%Results_PAGENUM)>0?(int)(PageTemp/Results_PAGENUM)+1:(int)(PageTemp/Results_PAGENUM);

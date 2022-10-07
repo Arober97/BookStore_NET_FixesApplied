@@ -218,14 +218,16 @@ void Detail_Show() {
 		Detail_image_url.NavigateUrl= Server.HTMLEncode(Detail_image_url.NavigateUrl.Raw)
 		
 
-	Detail_notes.Text =CCUtility.GetValue(row, "notes");
+	Detail_notes.Text.Raw =CCUtility.GetValue(row, "notes");
+	Detail_notes.Text = Server.HTMLEncode(Detail_notes.Text.Raw);
 		
 		
 		
 
 	Detail_product_url.Text =Server.HtmlEncode(CCUtility.GetValue(row, "product_url").ToString());
 		
-		Detail_product_url.NavigateUrl=CCUtility.GetValue(row, "product_url")+"";
+		Detail_product_url.NavigateUrl.Raw=CCUtility.GetValue(row, "product_url")+"";
+		Detail_product_url.NavigateUrl=Server.HTMLEncode(Detail_product_url.NavigateUrl.Raw);
 		
 
 	
@@ -482,7 +484,8 @@ void Rating_Show() {
 	Rating_item_id.Value = CCUtility.GetValue(row, "item_id");
 		
 
-	Rating_rating_view.Text =CCUtility.GetValue(row, "rating");
+	Rating_rating_view.Text.Raw =CCUtility.GetValue(row, "rating");
+	Rating_rating_view.Text = Server.HTMLEncode(Rating_rating_view.Text.Raw);
 		
 		
 		

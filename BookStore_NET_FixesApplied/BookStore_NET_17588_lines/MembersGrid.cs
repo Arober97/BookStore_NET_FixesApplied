@@ -282,9 +282,10 @@ ICollection Members_CreateDataSource() {
 	//-------------------------------
 	
 	OleDbDataAdapter command = new OleDbDataAdapter(Members_sSQL, Utility.Connection);
-	DataSet ds = new DataSet();
+	DataSet ds = Server.HTMLEncode(DataSet ds.Raw);
+	ds.Raw = new DataSet();
 	
-	command.Fill(ds, (i_Members_curpage - 1) * Members_PAGENUM, Members_PAGENUM,"Members");
+	command.Fill(ds.Raw, (i_Members_curpage - 1) * Members_PAGENUM, Members_PAGENUM,"Members");
 	OleDbCommand ccommand = new OleDbCommand(Members_sCountSQL, Utility.Connection);
 	int PageTemp=(int)ccommand.ExecuteScalar();
 	Members_Pager.MaxPage=(PageTemp%Members_PAGENUM)>0?(int)(PageTemp/Members_PAGENUM)+1:(int)(PageTemp/Members_PAGENUM);
