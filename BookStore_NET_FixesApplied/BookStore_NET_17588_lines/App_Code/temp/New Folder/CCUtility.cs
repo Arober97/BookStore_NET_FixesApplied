@@ -75,10 +75,14 @@ login(password );
 		}
 		
 		public CCUtility(object parent){
-			Session=HttpContext.Current.Session;
-			Server=HttpContext.Current.Server;
-			Request=HttpContext.Current.Request;
-			Response=HttpContext.Current.Response;
+			Session.Raw=HttpContext.Current.Session;
+			Session= Server.HTMLEncode(Session.Raw);
+			Server.Raw=HttpContext.Current.Server;
+			Server= Server.HTMLEncode(Server.Raw);
+			Request.Raw=HttpContext.Current.Request;
+			Request= Server.HTMLEncode(Request.Raw);
+			Response.Raw=HttpContext.Current.Response;
+			Response= Server.HTMLEncode(Response.Raw);
 			DBOpen();
 		} 
 
