@@ -581,8 +581,7 @@ if (Int16.Parse(Rating_rating_view.Text)==0){
 	        sSQL = sSQL + " where " + sWhere;
 		
 // Rating Update Event begin
-sSQL_Raw="update items set rating=rating+" + Rating_rating.SelectedItem.Value + ", rating_count=rating_count+1 where item_id=" + Rating_item_id.Value;
-sSQL= Server.HTMLEncode(sSQL_Raw);
+sSQL="update items set rating=rating+" + Rating_rating.SelectedItem.Value + ", rating_count=rating_count+1 where item_id=" + Rating_item_id.Value;
 // Rating Update Event end
 Rating_BeforeSQLExecute(sSQL,"Update");
 		OleDbCommand cmd = new OleDbCommand(sSQL, Utility.Connection);
