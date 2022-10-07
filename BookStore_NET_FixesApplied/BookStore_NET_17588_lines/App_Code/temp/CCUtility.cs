@@ -168,7 +168,7 @@ login(password );
 	}
 	Sanitizer = array(";","\","#","$","?","/")
 	string Param = string_replace(Sanitizer,"",Param.Raw)}
-
+//Fixes Input with Sanitizer
 	public string Dlookup(string table, string field, string sWhere)
 	{
 		string sSQL = "SELECT " + field + " FROM " + table + " WHERE " + sWhere;

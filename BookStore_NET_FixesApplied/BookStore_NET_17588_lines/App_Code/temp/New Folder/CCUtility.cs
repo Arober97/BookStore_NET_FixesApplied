@@ -77,7 +77,8 @@ login(password );
 		public CCUtility(object parent){
 			Session=HttpContext.Current.Session;
 			Server=HttpContext.Current.Server;
-			Request=HttpContext.Current.Request;
+			Request_Raw=HttpContext.Current.Request_Raw;
+			Request=Server.HTMLEncode(Request_Raw);
 			Response=HttpContext.Current.Response;
 			DBOpen();
 		} 
