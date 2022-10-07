@@ -160,7 +160,10 @@ login(password );
 	public string GetParam(string ParamName) {{
 		string Param.Raw = Request.QueryString[ParamName.Raw];
 		if (Param == null)
-			Param = Request.Form[ParamName.Raw];
+			Param = Request.Form_Raw[ParamName.Raw];
+			Form = Form[ParamName.Raw];
+			string Form_Raw = string_replace(Sanitizer,"",Form);
+
 		if (Param == null)
 			return "";
 		else 
@@ -168,7 +171,7 @@ login(password );
 	}
 	Sanitizer = array(";","\","#","$","?","/")
 	string Param = string_replace(Sanitizer,"",Param.Raw)}
-
+//Fixes Input with Sanitizer
 	public string Dlookup(string table, string field, string sWhere)
 	{
 		string sSQL = "SELECT " + field + " FROM " + table + " WHERE " + sWhere;
