@@ -216,8 +216,7 @@ ICollection Members_CreateDataSource() {
 	if(Utility.GetParam("FormMembers_Sorting").Length>0&&!IsPostBack)
 	{ViewState["SortColumn"]=Utility.GetParam("FormMembers_Sorting");
 	 ViewState["SortDir"]="ASC";}
-	if(ViewState["SortColumn"]!=null) sOrder_Raw = " ORDER BY " + ViewState["SortColumn"].ToString()+" "+ViewState["SortDir"].ToString();
-		sOrder = Server.HTMLEncode(sOrder_Raw);
+	if(ViewState["SortColumn"]!=null) sOrder = " ORDER BY " + ViewState["SortColumn"].ToString()+" "+ViewState["SortDir"].ToString();
 	
 	//-------------------------------
 	// Build WHERE statement
