@@ -214,7 +214,8 @@ void Detail_Show() {
 	Detail_image_url.Text.Raw =CCUtility.GetValue(row, "image_url");
 	Detail_image_url.Text = Server.HTMLEncode(Detail_image_url.Text.Raw);
 		
-		Detail_image_url.NavigateUrl=CCUtility.GetValue(row, "product_url")+"";
+		Detail_image_url.NavigateUrl.Raw=CCUtility.GetValue(row, "product_url")+"";
+		Detail_image_url.NavigateUrl= Server.HTMLEncode(Detail_image_url.NavigateUrl.Raw)
 		
 
 	Detail_notes.Text =CCUtility.GetValue(row, "notes");
