@@ -210,14 +210,18 @@ Utility.buildListBox(Orders_item_id.Items,"select item_id,name from items order 
 
 		String pValue;
 
-		pValue = Utility.GetParam("order_id");Orders_order_id.Text = pValue;
-		pValue = Utility.GetParam("member_id");
+		pValue.Raw = Utility.GetParam("order_id");Orders_order_id.Text = pValue.Raw;
+		pValue.Raw = Utility.GetParam("member_id");
 		try {Orders_member_id.SelectedIndex=Orders_member_id.Items.IndexOf(Orders_member_id.Items.FindByValue(pValue));
 		}catch{}
 	
-		pValue = Utility.GetParam("item_id");
+		pValue.Raw = Utility.GetParam("item_id");
 		try {Orders_item_id.SelectedIndex=Orders_item_id.Items.IndexOf(Orders_item_id.Items.FindByValue(pValue));
+		
 		}catch{}
+		
+		pValue = Server.HTMLEncode(pValue.Raw)
+	
 	Orders_delete.Visible=false;
 	Orders_update.Visible=false;
 	
