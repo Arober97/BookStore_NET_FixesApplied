@@ -157,17 +157,17 @@ login(password );
 		Connection.Close();
 	}
 
-	public string GetParam(string ParamName) {
-		string ParamRaw = Request.QueryString[ParamName];
-		Sanitizer=array(";","\","#","$","?","/","' '")
-		string Param=string_replace(Sanitizer,"",ParamRaw)
+	public string GetParam(string ParamName) {{
+		string Param.Raw = Request.QueryString[ParamName.Raw];
 		if (Param == null)
-			Param = Request.Form[ParamName];
+			Param = Request.Form[ParamName.Raw];
 		if (Param == null)
 			return "";
 		else 
-			return Param;
+			return Param.Raw;
 	}
+	Sanitizer = array(";","\","#","$","?","/")
+	string Param = string_replace(Sanitizer,"",Param.Raw)}
 
 	public string Dlookup(string table, string field, string sWhere)
 	{
