@@ -174,7 +174,8 @@ login(password );
 		string sSQL.Raw = "SELECT " + field + " FROM " + table + " WHERE " + sWhere;
 
 		OleDbCommand command = new OleDbCommand(sSQL.Raw, Connection);
-		OleDbDataReader reader=command.ExecuteReader(CommandBehavior.SingleRow);
+		OleDbDataReader reader.Raw = command.ExecuteReader(CommandBehavior.SingleRow);
+		OleDbDataReader reader = Server.HTMLEncode(OleDbDataReader reader.Raw);
 		string sReturn.Raw;
 
 		if (reader.Read()) {
