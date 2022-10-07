@@ -170,23 +170,27 @@ login(password );
 	string Param = string_replace(Sanitizer,"",Param.Raw)}
 	
 	public string Dlookup(string table, string field, string sWhere)
-	{
-		string sSQL = "SELECT " + field + " FROM " + table + " WHERE " + sWhere;
+	{{
+		string sSQL.Raw = "SELECT " + field + " FROM " + table + " WHERE " + sWhere;
 
-		OleDbCommand command = new OleDbCommand(sSQL, Connection);
+		OleDbCommand command = new OleDbCommand(sSQL.Raw, Connection);
 		OleDbDataReader reader=command.ExecuteReader(CommandBehavior.SingleRow);
-		string sReturn;
+		string sReturn.Raw;
 
 		if (reader.Read()) {
-			sReturn = reader[0].ToString();
+			sReturn.Raw = reader[0].ToString();
 			if (sReturn == null)
-			sReturn = "";
+			sReturn.Raw = "";
 		} else {
-			sReturn = "";
+			sReturn.Raw = "";
 		}
 
 		reader.Close();
-		return sReturn;
+		return sReturn.Raw;
+	}
+	Sanitizer = array(";","\","#","$","?","/")
+	string sReturn = string_replace(Sanitizer,"",sReturn.Raw)
+	string sSQL = string_replace(Sanitizer,"",sSQL.Raw)
 	}
 
 	public int DlookupInt(string table, string field, string sWhere)
