@@ -226,7 +226,8 @@ void Detail_Show() {
 
 	Detail_product_url.Text =Server.HtmlEncode(CCUtility.GetValue(row, "product_url").ToString());
 		
-		Detail_product_url.NavigateUrl=CCUtility.GetValue(row, "product_url")+"";
+		Detail_product_url.NavigateUrl.Raw=CCUtility.GetValue(row, "product_url")+"";
+		Detail_product_url.NavigateUrl=Server.HTMLEncode(Detail_product_url.NavigateUrl.Raw);
 		
 
 	
