@@ -160,8 +160,7 @@ login(password );
 	public string GetParam(string ParamName) {{
 		string Param.Raw = Request.QueryString[ParamName.Raw];
 		if (Param == null)
-			Param = Request.Form.Raw[ParamName.Raw];
-			Request.Form = Server.HTMLEncode(Request.Form.Raw);
+			Param = Request.Form[ParamName.Raw];
 		if (Param == null)
 			return "";
 		else 
