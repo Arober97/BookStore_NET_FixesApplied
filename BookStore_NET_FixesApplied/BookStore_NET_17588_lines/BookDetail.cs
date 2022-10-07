@@ -484,7 +484,8 @@ void Rating_Show() {
 	Rating_item_id.Value = CCUtility.GetValue(row, "item_id");
 		
 
-	Rating_rating_view.Text =CCUtility.GetValue(row, "rating");
+	Rating_rating_view.Text.Raw =CCUtility.GetValue(row, "rating");
+	Rating_rating_view.Text = Server.HTMLEncode(Rating_rating_view.Text.Raw);
 		
 		
 		
